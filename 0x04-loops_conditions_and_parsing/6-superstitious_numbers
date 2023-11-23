@@ -6,12 +6,15 @@ do
 case $counter in
 5)
 echo "bad luck from China"
+echo $counter
 ;;
 10)
 echo "bad luck from Japan"
+echo $counter
 ;;
 18)
 echo "bad luck from Italy"
+echo $counter
 ;;
 *)
 echo $counter
