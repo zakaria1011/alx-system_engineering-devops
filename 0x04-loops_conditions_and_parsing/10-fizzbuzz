@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# fizz buzz
+counter=1
+while [ $counter -le 100 ]
+do
+    if [ $((counter % 3)) -le 0 ] && [ $((counter % 5)) -le 0 ]; then
+        echo "FizzBuzz"
+        ((counter++))
+    elif [ $((counter % 3)) -le 0 ]; then
+        echo "Fizz"
+        ((counter++))
+    elif [ $((counter % 5)) -le 0 ]; then
+        echo "Buzz"
+        ((counter++))
+    else
+    echo $counter
+((counter++))
+fi
+done
