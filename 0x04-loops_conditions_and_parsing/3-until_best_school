@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# print "Best School" 10 times using while loop
+# print "Best School" 10 times using untile loop
 counter=1
 until [ $counter -gt 10 ]
 do
