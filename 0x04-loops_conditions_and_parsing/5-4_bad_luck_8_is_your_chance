@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
-# loop with for but using condition
-for (( i=0; i<10; i++))
+# loop with for but using conditin
+counter=1
+while [ $counter -le 10 ]
 do
-if [ $i -eq 3 ]; then
+if [ $counter -eq 4 ]; then
 echo "bad luck"
-elif [ $i -eq 7 ]; then
+elif [ $counter -eq 8 ]; then
 echo "good luck"
 else
 echo "Best School"
 fi
+((counter++))
 done
