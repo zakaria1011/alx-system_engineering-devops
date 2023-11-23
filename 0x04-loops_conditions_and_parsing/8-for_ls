@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# display directory content
+for file in *; do
+    # Check if the file is not a hidden file
+    if [[ $file != .* ]]; then
+        # Use awk to extract the part of the name after the first dash
+        part_after_dash=$(echo "$file" | awk -F'-' '{print $2}')
+
+        # Print the extracted part
+        echo "$part_after_dash"
+    fi
+done
