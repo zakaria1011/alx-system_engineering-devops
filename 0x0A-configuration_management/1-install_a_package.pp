@@ -1,12 +1,5 @@
-# File: install_flask.pp
+# install puppet-lint -v 2.5.0
 
-exec { 'install_flask':
-  command     => '/usr/bin/pip3 install Flask==2.1.0',
-  path        => '/usr/local/bin:/usr/bin',
-  refreshonly => true,
-}
-
-package { 'python3-pip':
-  ensure => present,
-  before => Exec['install_flask'],
+exec { 'puppet-lint':
+  command => '/usr/bin/apt-get -y install puppet-lint -v 2.5.0',
 }
