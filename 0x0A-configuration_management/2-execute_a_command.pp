@@ -1,9 +1,6 @@
-# 2-execute_a_command.pp
+# kill process killmenow
 
-exec { 'killmenow':
-  command     => 'pkill -f killmenow',
-  path        => ['/bin', '/usr/bin'],
-  refreshonly => true,
+exec { 'pkill':
+  command  => 'pkill killmenow',
+  provider => 'shell',
 }
-
-# End of Puppet manifest
