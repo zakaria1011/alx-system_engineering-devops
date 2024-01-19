@@ -1,6 +1,12 @@
-# File: 1-install_a_package.pp
+# File: install_flask.pp
 
-package { 'flask':
-  ensure   => '2.1.0',
-  provider => 'pip3',
+exec { 'install_flask':
+  command     => '/usr/bin/pip3 install Flask==2.1.0',
+  path        => '/usr/local/bin:/usr/bin',
+  refreshonly => true,
+}
+
+package { 'python3-pip':
+  ensure => present,
+  before => Exec['install_flask'],
 }
