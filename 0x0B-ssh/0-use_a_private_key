@@ -1,4 +1,4 @@
-#!/bin/bash
+#!usr/bin/env bash
 # connect to server with ssh
 server_ip="52.87.230.66"
 user="ubuntu"
