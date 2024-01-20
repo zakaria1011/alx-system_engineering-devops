@@ -1,6 +1,8 @@
-#!/usr/bin/env bash
-server_ip = "8.8.8.8"
-user = "ubuntu"
+#!/bin/bash
 
-private_key = "~/.ssh/school"
+server_ip="8.8.8.8"
+user="ubuntu"
+
+private_key="~/.ssh/school"
+
 ssh -i "$private_key" "$user@$server_ip"
