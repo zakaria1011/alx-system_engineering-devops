@@ -22,4 +22,4 @@ fi
 echo "Nginx installed and configured successfully."
 
 # Note: You can't use systemctl for restarting nginx, so we use the following command:
-kill -s HUP $(pidof nginx)
+kill -s HUP "$(pidof nginx)"
