@@ -1,8 +1,25 @@
 #!/usr/bin/env bash
-# installs nginx and configure it to listen on port 80
-# print "Hello World"
 
-sudo apt-get -y update
-sudo apt-get -y install nginx
-echo 'Hello World!' > /var/www/html/index.nginx-debian.html
-sudo service nginx start
+# Update package list
+apt-get update
+
+# Install nginx
+apt-get install -y nginx
+
+# Create a custom index.html file
+echo "Hello World!" > /usr/share/nginx/html/index.html
+
+# Start Nginx
+/usr/sbin/nginx
+
+# Ensure Nginx is listening on port 80
+if ! lsof -i:80; then
+    echo "Nginx is not listening on port 80. Check the configuration or logs."
+    exit 1
+fi
+
+# Output success message
+echo "Nginx installed and configured successfully."
+
+# Note: You can't use systemctl for restarting nginx, so we use the following command:
+kill -s HUP $(pidof nginx)
