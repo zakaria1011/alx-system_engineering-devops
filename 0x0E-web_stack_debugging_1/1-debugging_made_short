@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# fix nginx port 80
+cp /etc/nginx/sites-available/default{,.bak}
+service nginx restart
