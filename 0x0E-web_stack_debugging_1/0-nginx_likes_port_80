@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # fixing port 80 listen nginx
 
-sudo ln -s  /etc/nginx/sites-available/default /etc/nginx/sites-available/default
+sudo ln -s  /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx restart
