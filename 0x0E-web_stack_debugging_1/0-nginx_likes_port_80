@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Update package information
 
-cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
-service nginx restart
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+sudo service nginx restart
