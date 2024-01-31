@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
 # Update package information
 
-apt-get update
-
-# Install Nginx
-apt-get install -y nginx
-
-# Backup default Nginx configuration
 cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
-
-# Restart Nginx to apply changes
 service nginx restart
