@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Update package information
+# fixing port 80 listen nginx
 
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 sudo service nginx restart
