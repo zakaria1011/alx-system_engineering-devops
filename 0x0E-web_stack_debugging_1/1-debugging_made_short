@@ -2,4 +2,4 @@
 # fix nginx port 80
 cp /etc/nginx/sites-available/default{,.bak}
 service nginx restart
-killall -9 nginx
+service nginx stop
