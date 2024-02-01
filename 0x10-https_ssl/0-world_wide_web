@@ -1,33 +1,23 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
+# script that will display information about subdomains
 
-# Function to display information about a subdomain
-display_info() {
-    domain=$1
-    subdomain=$2
+domain_info () {
+    local line
+    line=$(dig "$2"."$1" +short)
 
-    # Use dig to get information about the subdomain
-    result=$(dig $subdomain.$domain | grep -A1 'ANSWER SECTION:')
-
-    # Extract the record type and destination IP from the result using awk
-    record_type=$(echo "$result" | awk '/IN\s+[A-Z]+/ {print $4}')
-    destination=$(echo "$result" | awk '/[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/ {print $5}')
-
-    # Display the information
-    echo "The subdomain $subdomain is a $record_type record and points to $destination"
+    if [ -n "$line" ]; then
+        echo "$2 $line" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
+    else
+        echo "No information found for subdomain $2"
+    fi
 }
 
-# Main script
-domain=$1
-subdomain=$2
-
-# Check if subdomain is provided, if not, set default subdomains
-if [ -z "$subdomain" ]; then
-    subdomains=("www" "lb-01" "web-01" "web-02")
+if [ "$#" -eq 1 ]; then
+    for subdomain in "www" "lb-01" "web-01" "web-02"; do
+        domain_info "$1" "$subdomain"
+    done
+elif [ "$#" -eq 2 ]; then
+    domain_info "$1" "$2"
 else
-    subdomains=($subdomain)
+    echo "Usage: $0 <domain> [subdomain]"
 fi
-
-# Loop through the subdomains and display information
-for sub in "${subdomains[@]}"; do
-    display_info $domain $sub
-done
