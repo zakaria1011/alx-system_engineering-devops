@@ -10,3 +10,6 @@ cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 
 # Restart Nginx to apply changes
 service nginx restart
+
+# Stop Nginx
+service nginx stop
