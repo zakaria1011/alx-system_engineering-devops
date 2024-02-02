@@ -1,33 +1,6 @@
 #!/usr/bin/env bash
-# Update package information
-apt-get update
+# Configures an Nginx server to listen on port 80
 
-# Install Nginx
-apt-get install -y nginx
-
-# Backup the default Nginx configuration file
-cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
-
-# Configure Nginx to listen on port 80 for all active IPv4 IPs
-echo "server {
-    listen 80;
-    server_name _;
-
-    location / {
-        root /usr/share/nginx/html;
-        index index.html;
-    }
-}" > /etc/nginx/sites-available/default
-
-# Restart Nginx to apply changes
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
-
-# Check if Nginx returns a web page with HTTP 200
-response=$(curl -s -o /dev/null -w "%{http_code}" 0:80)
-
-# Output success message if the response is 200
-if [ "$response" -eq 200 ]; then
-    echo "Nginx is now configured to listen on port 80 for all active IPv4 IPs. HTTP 200 received."
-else
-    echo "Error: Nginx is not returning HTTP 200 on port 80."
-fi
