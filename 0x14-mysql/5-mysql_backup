@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Check if password argument is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <mysql_password>"
+    exit 1
+fi
+
+# Define MySQL connection parameters
+MYSQL_USER="root"
+MYSQL_PASSWORD="$1"
+MYSQL_DUMP_FILE="backup.sql"
+DATE_FORMAT=$(date +"%d-%m-%Y")
+ARCHIVE_NAME="${DATE_FORMAT}.tar.gz"
+
+# Dump MySQL databases
+mysqldump -u"${MYSQL_USER}" -p"${MYSQL_PASSWORD}" --all-databases > "${MYSQL_DUMP_FILE}"
+
+# Compress dump file into tar.gz archive
+tar -czf "${ARCHIVE_NAME}" "${MYSQL_DUMP_FILE}"
+
+# Remove dump file
+rm -f "${MYSQL_DUMP_FILE}"
+
+echo "MySQL backup completed. Archive: ${ARCHIVE_NAME}"
