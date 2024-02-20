@@ -17,4 +17,8 @@ if __name__ == "__main__":
     with open(csv_file_name, 'w', newline="") as csvfile:
         csv_writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for todo in user_todos:
-            csv_writer.writerow([employee_id, name, todo['completed'], todo['title']])
+            csv_writer.writerow([
+                employee_id, name,
+                todo['completed'],
+                todo['title']
+            ])
