@@ -1,7 +1,5 @@
 #!/usr/bin/python
 """ task 0 """
-
-
 import requests
 
 
